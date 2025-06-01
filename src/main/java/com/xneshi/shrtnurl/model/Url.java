@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -21,5 +21,5 @@ public class Url {
   private UUID id;
   private String originalUrl;
   private String shortCode;
-  private Date createdAt;
+  private LocalDateTime createdAt;
 }
