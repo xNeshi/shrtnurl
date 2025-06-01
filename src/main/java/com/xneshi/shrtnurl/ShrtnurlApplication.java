@@ -1,13 +1,13 @@
-package com.xneshi.shrtn;
+package com.xneshi.shrtnurl;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ShrtnApplication {
+public class ShrtnurlApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(ShrtnApplication.class, args);
+    SpringApplication.run(ShrtnurlApplication.class, args);
   }
 
 }

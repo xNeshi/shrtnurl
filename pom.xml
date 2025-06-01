@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.xneshi</groupId>
-    <artifactId>shrtn</artifactId>
+    <artifactId>shrtnurl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>shrtn</name>
+    <name>shrtnurl</name>
     <description>shrtn</description>
     <url/>
     <licenses>
