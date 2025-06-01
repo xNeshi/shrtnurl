@@ -1,4 +1,4 @@
-package com.xneshi.shrtn.model;
+package com.xneshi.shrtnurl.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
