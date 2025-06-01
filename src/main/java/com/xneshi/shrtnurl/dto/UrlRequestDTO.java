@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 public record UrlRequestDTO(
     @NotBlank
     String shortCode,
-    @NotBlank(groups = ShortenerUrlValidationGroup.class)
+    @NotBlank
     String originalUrl
 ) {
 }
