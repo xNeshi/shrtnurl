@@ -7,6 +7,7 @@ import com.xneshi.shrtnurl.model.Url;
 import com.xneshi.shrtnurl.respository.UrlRepository;
 import com.xneshi.shrtnurl.util.ShortenerUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -20,6 +21,7 @@ public class UrlService {
     var shortenedUrl = UrlMapper.toUrl(url);
     shortenedUrl.setCreatedAt(LocalDateTime.now());
     shortenedUrl.setShortCode(ShortenerUtil.hashUrl(url.originalUrl()));
+    shortenedUrl.setExpiresAt(LocalDateTime.now().plusDays(30));
     urlRepository.save(shortenedUrl);
 
     return UrlMapper.toUrlResponseDTO(shortenedUrl);
@@ -28,5 +30,10 @@ public class UrlService {
   public String findOriginalUrl(String shortCode) {
     Url url = urlRepository.findByShortCode(shortCode);
     return url.getOriginalUrl();
+  }
+
+  @Scheduled(cron = "0 0 0 * * *")
+  public void expireUrls() {
+    urlRepository.deleteAllByExpiresAtBefore(LocalDateTime.now());
   }
 }
