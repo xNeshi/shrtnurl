@@ -20,8 +20,14 @@ public class UrlService {
   public UrlResponseDTO shortenUrl(UrlRequestDTO url) {
     var shortenedUrl = UrlMapper.toUrl(url);
     shortenedUrl.setCreatedAt(LocalDateTime.now());
-    shortenedUrl.setShortCode(ShortenerUtil.hashUrl(url.originalUrl()));
     shortenedUrl.setExpiresAt(LocalDateTime.now().plusDays(30));
+
+    if (url.customizedName() != null && !url.customizedName().isBlank()) {
+      shortenedUrl.setShortCode(url.customizedName());
+    } else {
+      shortenedUrl.setShortCode(ShortenerUtil.hashUrl(url.originalUrl()));
+    }
+
     urlRepository.save(shortenedUrl);
 
     return UrlMapper.toUrlResponseDTO(shortenedUrl);
